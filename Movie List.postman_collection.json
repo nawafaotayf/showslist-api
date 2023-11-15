@@ -1,0 +1,519 @@
+{
+	"info": {
+		"_postman_id": "73b07d1c-bb0a-4862-8482-a0f4cfbb52c1",
+		"name": "Movie List",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30524960"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "5ba3f38a-c51f-485f-89b9-1707d9a48bc8",
+								"username": "user"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/movielist-admin/users/allusers"
+					},
+					"response": []
+				},
+				{
+					"name": "delete the user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/movielist-admin/users/deleteuser?name=razan",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movielist-admin",
+								"users",
+								"deleteuser"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "razan"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"ahmad\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/movielist-admin/users/updateuser?name=nawaf",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movielist-admin",
+								"users",
+								"updateuser"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "nawaf"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"user\",\r\n    \"password\":\"user\",\r\n    \"dob\":\"1998-02-03\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/movielist/auth/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "sign in admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/movielist/auth/signin"
+					},
+					"response": []
+				},
+				{
+					"name": "sign in user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"user\",\r\n    \"password\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/movielist/auth/signin"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "movies",
+			"item": [
+				{
+					"name": "find movie by name",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "delete movie",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/movielist-admin/movie/deletemovie?name=spiderman",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movielist-admin",
+								"movie",
+								"deletemovie"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "spiderman"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNjk4MjIxOTQ4LCJleHAiOjE2OTgyMjU1NDh9.9oFKDEKPsnhVD7B4p4wA7aQ6fe4Ype5CE-E3s_qF_Qw"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"name\": \"spiderman\",\r\n    \"duration\" : 2,\r\n    \"story\":\"its spiderman no need for story\",\r\n    \"studios\":\"marvel\",\r\n    \"aired\" : \"2023-10-11\",\r\n    \"seasons\": 3,\r\n    \"users\":{\r\n        \"id\" : 1\r\n    }\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080//movielist-admin/movie/addmovies"
+					},
+					"response": []
+				},
+				{
+					"name": "update movie",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"studios\":\"marvel\",\r\n    \"story\" : \"its spider man no need for story\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/movielist-admin/movie/updatemovie?name=spiderman",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movielist-admin",
+								"movie",
+								"updatemovie"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "spiderman"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY5ODIyMTg2MiwiZXhwIjoxNjk4MjI1NDYyfQ.gCGEQhubRDeiuPBHk7yAtpM92p64V9WlP1iuh9LtP2w"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/movielist/movie/allmovies"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "series",
+			"item": [
+				{
+					"name": "find series by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/movielist/series/findbyname?name=brooklyn+nine+nine",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movielist",
+								"series",
+								"findbyname"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "brooklyn+nine+nine"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all series",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/movielist/series/allseries"
+					},
+					"response": []
+				},
+				{
+					"name": "add series",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNjk4MjIzMjg5LCJleHAiOjE2OTgyMjY4ODl9.ZRewq-rJaYFXB6J-DsyL8XpUwLdvnt-eyuQJnb-JSXA"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"name\": \"Game of thrones\",\r\n    \"duration\" : 9.20,\r\n    \"story\":\"its game of thrones no need for story\",\r\n    \"studios\":\"HBO\",\r\n    \"seasons\": \"9\",\r\n    \"episodes\": \"87\",\r\n    \"start\" : \"2011-10-20\",\r\n    \"end\": \"2020-12-20\",\r\n    \"users\":{\r\n        \"id\" : 1\r\n    }\r\n},\r\n{\r\n    \"name\": \"brooklyn nine nine\",\r\n    \"duration\" : 8,\r\n    \"story\":\"its game of thrones no need for story\",\r\n    \"studios\":\"Fox\",\r\n    \"seasons\": \"8\",\r\n    \"episodes\": \"153\",\r\n    \"start\" : \"2013-10-17\",\r\n    \"end\": \"2021-10-16\",\r\n    \"users\":{\r\n        \"id\" : 2\r\n    }\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/movielist-admin/series/addseries"
+					},
+					"response": []
+				},
+				{
+					"name": "delete series",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY5ODIyMzI2NSwiZXhwIjoxNjk4MjI2ODY1fQ.BxmkMG7Y1HiFxSw-gK4mDU7COpiUHJxiVJBdRO2jGX8"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/movielist-admin/series/delete?name=game+of+thrones",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movielist-admin",
+								"series",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "game+of+thrones"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update series",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"story\":\"because its for hector :D\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/movielist-admin/series/update?name=brooklyn+nine+nine",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movielist-admin",
+								"series",
+								"update"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "brooklyn+nine+nine"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rating",
+			"item": [
+				{
+					"name": "add rating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"comment\": \"nine nine\",\r\n    \"rate\": \"7\",\r\n    \"users\":{\r\n        \"id\": 2\r\n    },\r\n    \"shows\":{\r\n        \"id\":1\r\n    }\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/movielist/rating/addrating"
+					},
+					"response": []
+				},
+				{
+					"name": "all rating",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/movielist/rating/allrating"
+					},
+					"response": []
+				},
+				{
+					"name": "delete rating",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/movielist/rating/delete?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movielist",
+								"rating",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Rating",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rate\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/movielist/rating/update?id=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movielist",
+								"rating",
+								"update"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
