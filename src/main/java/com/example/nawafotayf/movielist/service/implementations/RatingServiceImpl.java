@@ -43,7 +43,7 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public Rating findRatingByShowsId(int id) {
+    public List<Rating> findRatingByShowsId(int id) {
         return ratingRepository.findByshows_id(id);
 
     }

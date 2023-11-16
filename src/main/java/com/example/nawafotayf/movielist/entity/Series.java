@@ -2,6 +2,7 @@ package com.example.nawafotayf.movielist.entity;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -10,6 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_series")
 @JsonPropertyOrder({"id", "image", "name", "story", "duration", "studios","seasons","episodes","start","end","users"})
+@CrossOrigin
 public class Series extends Shows{
     private int episodes;
     private LocalDate start;

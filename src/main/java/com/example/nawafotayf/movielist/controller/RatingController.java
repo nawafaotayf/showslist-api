@@ -31,7 +31,7 @@ public class RatingController {
         return ratingServiceImpl.listAllRating();
     }
     @GetMapping(value = "/movielist/rating/{id}")
-    public Rating findRatingByShowId(@PathVariable int id){
+    public List<Rating> findRatingByShowId(@PathVariable int id){
         return ratingServiceImpl.findRatingByShowsId(id);
     }
     @DeleteMapping(value = "/movielist/rating/delete")

@@ -26,6 +26,8 @@ public class Shows {
     private Users users;
     @OneToMany(mappedBy = "shows" ,cascade = CascadeType.ALL)
     private Set<Rating> rating;
+    @OneToMany(mappedBy = "shows" ,cascade = CascadeType.ALL)
+    private Set<Favorite> favorite;
 
     public Shows(int id, String name, String story, double duration, String studios, int seasons,String image, Users users) {
         Id = id;

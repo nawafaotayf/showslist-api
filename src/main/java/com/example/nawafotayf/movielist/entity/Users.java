@@ -33,6 +33,8 @@ public class   Users implements UserDetails {
     private Set<Shows> shows;
     @OneToMany(mappedBy = "users" ,cascade = CascadeType.ALL)
     private Set<Rating> rating;
+    @OneToMany(mappedBy = "users" ,cascade = CascadeType.ALL)
+    private Set<Favorite> favorite;
     public Users(String username, String password, LocalDate dob, Roles roles) {
         this.username = username;
         this.password = password;
