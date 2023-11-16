@@ -11,4 +11,5 @@ public interface UsersService {
     public void deleteUser(String name);
     public void updateUser(String name, Users users);
     public UserDetailsService userDetailsService();
+
 }

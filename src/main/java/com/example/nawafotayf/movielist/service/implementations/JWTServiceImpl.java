@@ -54,7 +54,6 @@ public class JWTServiceImpl implements JWTService {
     private boolean isTokenExpired(String token){
         Date expiration = extractClaim(token, Claims::getExpiration);
         return expiration != null && expiration.before(new Date());
-
     }
     public boolean isTokenValid(String token, UserDetails userDetails){
         final String username = extractUsername(token);

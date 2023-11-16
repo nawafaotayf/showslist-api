@@ -9,4 +9,5 @@ public interface RatingService {
     public List<Rating> listAllRating();
     public void deleteRating(int id);
     public void updateRating(int id, Rating rating);
+    public Rating findRatingByShowsId(int id);
 }

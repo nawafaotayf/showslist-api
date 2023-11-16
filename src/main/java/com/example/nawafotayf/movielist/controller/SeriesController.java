@@ -57,5 +57,9 @@ public class SeriesController {
     public Series findbyname(@RequestParam String name) {
         return seriesServiceImpl.findByName(name);
     }
+    @GetMapping(value = "/movielist/series/{id}")
+    public Series findbyname(@PathVariable int id) {
+        return seriesServiceImpl.findSeriesById(id);
+    }
 }
 

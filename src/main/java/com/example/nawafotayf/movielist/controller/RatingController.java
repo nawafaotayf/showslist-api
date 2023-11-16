@@ -27,8 +27,12 @@ public class RatingController {
         }
     }
     @GetMapping(value = "/movielist/rating/allrating")
-    public List<Rating> ratings (){
+    public List<Rating> Allratings (){
         return ratingServiceImpl.listAllRating();
+    }
+    @GetMapping(value = "/movielist/rating/{id}")
+    public Rating findRatingByShowId(@PathVariable int id){
+        return ratingServiceImpl.findRatingByShowsId(id);
     }
     @DeleteMapping(value = "/movielist/rating/delete")
     public ResponseEntity<String> deleteRating(@RequestParam int id){

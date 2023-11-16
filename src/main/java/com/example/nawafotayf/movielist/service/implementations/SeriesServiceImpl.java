@@ -56,6 +56,9 @@ public class SeriesServiceImpl implements SeriesService {
         if(series.getEpisodes() != 0){
             findSeries.setEpisodes(series.getEpisodes());
         }
+        if(series.getImage() != null){
+            findSeries.setImage(series.getImage());
+        }
         seriesRepository.save(findSeries);
 
     }
@@ -63,6 +66,11 @@ public class SeriesServiceImpl implements SeriesService {
     @Override
     public Series findByName(String name) {
         return seriesRepository.findByname(name);
+    }
+
+    @Override
+    public Series findSeriesById(int id) {
+        return seriesRepository.findById(id).get();
     }
 
 }

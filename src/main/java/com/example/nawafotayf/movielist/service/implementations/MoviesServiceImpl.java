@@ -23,8 +23,8 @@ public class MoviesServiceImpl implements MoviesService {
         return moviesRepository.findAll();
     }
     @Override
-    public void deleteMovie(String name) {
-        Movies movieName = moviesRepository.findByname(name);
+    public void deleteMovie(int id) {
+        Movies movieName = moviesRepository.findById(id).get();
         moviesRepository.delete(movieName);
     }
     @Override
@@ -54,5 +54,36 @@ public class MoviesServiceImpl implements MoviesService {
         Movies movieName = moviesRepository.findByname(name);
         return movieName;
     }
+
+    @Override
+    public Movies findMovieById(int id) {
+        Movies movieId = moviesRepository.findById(id).get();
+        return movieId;
+    }
+
+    @Override
+    public void updateMovieById(int id, Movies movies) {
+        Movies movieId = moviesRepository.findById(id).get();
+        if(movies.getName() != null){
+            movieId.setName(movies.getName() );
+        }
+        if(movies.getStory() != null){
+            movieId.setStory(movies.getStory());
+        }
+        if(movies.getDuration() != 0){
+            movieId.setDuration(movies.getDuration());
+        }
+        if(movies.getStudios() != null){
+            movieId.setStudios(movies.getStudios());
+        }
+        if(movies.getImage() != null){
+            movieId.setImage(movies.getImage());
+        }
+
+        moviesRepository.save(movieId);
+    }
+
 }
+
+
 

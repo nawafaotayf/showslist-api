@@ -32,10 +32,10 @@ public class MovieController {
         }
     }
 
-    @DeleteMapping(value = "/movielist-admin/movie/deletemovie")
-    public ResponseEntity<String> deleteMovie(@RequestParam String name) {
+    @DeleteMapping(value = "/movielist-admin/movie/deletemovie/{id}")
+    public ResponseEntity<String> deleteMovie(@PathVariable int id) {
         try {
-            moviesServiceImpl.deleteMovie(name);
+            moviesServiceImpl.deleteMovie(id);
             String message = "movie deleted successfully";
             return ResponseEntity.status(HttpStatus.OK).body(message);
         } catch (Exception e) {
@@ -43,7 +43,7 @@ public class MovieController {
             return ResponseEntity.badRequest().body(message);
         }
     }
-    @PutMapping(value = "/movielist-admin/movie/updatemovie")
+    @PutMapping(value = "/movielist-admin/movie/updatemoviebyname")
     public ResponseEntity<String> updatemovie(@RequestParam String name, @RequestBody Movies movies){
         try{
             moviesServiceImpl.updateMovie(name, movies);
@@ -54,13 +54,27 @@ public class MovieController {
             String message = "movie not updated\n" + e.getMessage();
             return ResponseEntity.badRequest().body(message);
         }
-
         }
     @GetMapping(value = "/movielist/movie/findbyname")
     public Movies findbyname(@RequestParam String name){
         return moviesServiceImpl.findMovieByName(name);
-
+    }
+    @GetMapping(value = "/movielist/movie/{id}")
+    public Movies findById(@PathVariable int id){
+        return moviesServiceImpl.findMovieById(id);
     }
 
+    @PutMapping(value = "/movielist-admin/movie/updatemovie/{id}")
+    public ResponseEntity<String> updateMovieById(@PathVariable int id, @RequestBody Movies movies){
+        try{
+            moviesServiceImpl.updateMovieById(id, movies);
+            String message = "movie updated successfully";
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+        }
+        catch (Exception e){
+            String message = "movie not updated\n   " + e.getMessage();
+            return ResponseEntity.badRequest().body(message);
+        }
+    }
 
 }

@@ -11,4 +11,5 @@ public interface SeriesService {
     public void deleteSeries(String name);
     public void updateSeries(String name, Series series);
     public Series findByName(String name);
+    public Series findSeriesById(int id);
 }
