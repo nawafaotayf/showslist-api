@@ -1,6 +1,8 @@
 package com.example.nawafotayf.movielist.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 import java.util.Objects;
 
@@ -10,7 +12,9 @@ public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private RateEnum rating;
+    @Min(1)
+    @Max(10)
+    private int rating;
     @ManyToOne
     @JoinColumn(name = "show_id")
     private Shows shows;
@@ -21,7 +25,8 @@ public class Favorite {
     public Favorite() {
     }
 
-    public Favorite(int id, RateEnum rating, Shows shows, Users users) {
+
+    public Favorite(int id, int rating, Shows shows, Users users) {
         this.id = id;
         this.rating = rating;
         this.shows = shows;
@@ -36,11 +41,11 @@ public class Favorite {
         this.id = id;
     }
 
-    public RateEnum getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(RateEnum rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 

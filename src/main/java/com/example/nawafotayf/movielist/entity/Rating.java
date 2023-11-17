@@ -11,7 +11,6 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String comment;
-    private RateEnum rate;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users users;
@@ -21,7 +20,6 @@ public class Rating {
 
     public Rating(String comment, RateEnum rate) {
         this.comment = comment;
-        this.rate = rate;
     }
     public Rating(){
 
@@ -33,14 +31,6 @@ public class Rating {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public RateEnum getRate() {
-        return rate;
-    }
-
-    public void setRate(RateEnum rate) {
-        this.rate = rate;
     }
 
     public Users getUsers() {
@@ -72,12 +62,12 @@ public class Rating {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Rating rating = (Rating) o;
-        return id == rating.id && Objects.equals(comment, rating.comment) && rate == rating.rate && Objects.equals(users, rating.users) && Objects.equals(shows, rating.shows);
+        return id == rating.id && Objects.equals(comment, rating.comment) && Objects.equals(users, rating.users) && Objects.equals(shows, rating.shows);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, comment, rate, users, shows);
+        return Objects.hash(id, comment, users, shows);
     }
 
     @Override
@@ -85,7 +75,6 @@ public class Rating {
         return "Rating{" +
                 "id=" + id +
                 ", comment='" + comment + '\'' +
-                ", rate=" + rate +
                 ", users=" + users +
                 ", shows=" + shows +
                 '}';

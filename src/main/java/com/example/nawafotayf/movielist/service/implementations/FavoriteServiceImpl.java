@@ -27,10 +27,23 @@ public class FavoriteServiceImpl implements FavoriteService {
         );
         if(isFound.isPresent()) {
             isFound.get();
-            return "badRequest";
+
+            return "its added already";
     }
         favoriteRepository.save(favorite);
         return "added";
+    }
+
+    @Override
+    public Double findAverageRatingByShowId(int id) {
+        return favoriteRepository.findAverageRatingByShowId(id);
+    }
+
+    @Override
+    public String deleteFavoriteById(int id) {
+        Favorite favoriteId = favoriteRepository.findById(id).get();
+        favoriteRepository.delete(favoriteId);
+        return "deleted";
     }
 
 

@@ -14,19 +14,20 @@ public class FavoriteController {
     @Autowired
     private FavoriteServiceImpl favoriteServiceImpl;
     @PostMapping(value = "/movielist/favorite")
-    public ResponseEntity<String> addShowsToFavorite(@RequestBody Favorite favorite){
-        try {
-            favoriteServiceImpl.addShowsToFavorite(favorite);
-            String message = "shows in your favorite add successfully";
-            return ResponseEntity.status(HttpStatus.CREATED).body(message);
-        }
-        catch (Exception e){
-            String message = "its added already\n" + e.getMessage();
-            return ResponseEntity.badRequest().body(message);
-        }
+    public String addShowsToFavorite(@RequestBody Favorite favorite){
+        return favoriteServiceImpl.addShowsToFavorite(favorite);
     }
     @GetMapping(value = "/movielist/favorite/{id}")
     public List<Favorite> getAllFavoriteByUserId(@PathVariable int id){
         return favoriteServiceImpl.getAllFavoriteByUserId(id);
     }
+    @GetMapping(value = "/movielist/favorite/avg-rating/{id}")
+    public Double getAverageRatingByShowId(@PathVariable int id){
+        return favoriteServiceImpl.findAverageRatingByShowId(id);
+    }
+    @DeleteMapping(value = "/movielist/favorite/delete/{id}")
+    public String deleteFavoriteById(@PathVariable int id){
+        return favoriteServiceImpl.deleteFavoriteById(id);
+    }
+
 }

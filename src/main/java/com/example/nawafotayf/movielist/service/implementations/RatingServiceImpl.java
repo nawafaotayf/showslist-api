@@ -33,9 +33,6 @@ public class RatingServiceImpl implements RatingService {
     @Override
     public void updateRating(int id, Rating rating) {
         Rating findRating = ratingRepository.findById(id).get();
-        if(rating.getRate() != null){
-            findRating.setRate(rating.getRate());
-        }
         if(rating.getComment() != null){
             findRating.setComment(rating.getComment());
         }
