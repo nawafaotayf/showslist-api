@@ -4,7 +4,6 @@ import com.example.nawafotayf.movielist.entity.Favorite;
 import com.example.nawafotayf.movielist.repository.FavoriteRepository;
 import com.example.nawafotayf.movielist.service.interfaces.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,6 +43,11 @@ public class FavoriteServiceImpl implements FavoriteService {
         Favorite favoriteId = favoriteRepository.findById(id).get();
         favoriteRepository.delete(favoriteId);
         return "deleted";
+    }
+
+    @Override
+    public Optional<Favorite> getfavoriteByShowIdAndUserId(int userId, int showId) {
+        return favoriteRepository.findByUsersIdAndShowsId(userId, showId);
     }
 
 

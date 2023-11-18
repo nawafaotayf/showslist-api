@@ -1,5 +1,6 @@
 package com.example.nawafotayf.movielist.service.implementations;
 
+import com.example.nawafotayf.movielist.entity.Roles;
 import com.example.nawafotayf.movielist.service.interfaces.JWTService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -18,8 +19,11 @@ import java.util.function.Function;
 
 @Service
 public class JWTServiceImpl implements JWTService {
-    public String generateToken(UserDetails userDetails){
-        return Jwts.builder().setSubject(userDetails.getUsername())
+    public String generateToken(UserDetails userDetails, int id, Roles role){
+        return Jwts.builder()
+                .setSubject(userDetails.getUsername())
+                .claim("id", id)
+                .claim("role", role)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
                 .signWith(getSiginKey(), SignatureAlgorithm.HS256)
@@ -54,6 +58,12 @@ public class JWTServiceImpl implements JWTService {
     private boolean isTokenExpired(String token){
         Date expiration = extractClaim(token, Claims::getExpiration);
         return expiration != null && expiration.before(new Date());
+    }
+    public String extractUserId(String token){
+        return extractClaim(token, claims -> claims.get("id", String.class));
+    }
+    public String extractUserRole(String token){
+        return extractClaim(token, claims -> claims.get("role", String.class));
     }
     public boolean isTokenValid(String token, UserDetails userDetails){
         final String username = extractUsername(token);

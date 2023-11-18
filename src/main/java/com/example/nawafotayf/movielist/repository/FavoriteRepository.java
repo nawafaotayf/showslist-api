@@ -13,4 +13,5 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
     Optional<Favorite> findByUsersIdAndShowsId(int userId, int showsId);
     @Query("SELECT AVG(r.rating) FROM Favorite r WHERE r.shows.id = :id")
     Double findAverageRatingByShowId(@Param("id") int id);
+
 }

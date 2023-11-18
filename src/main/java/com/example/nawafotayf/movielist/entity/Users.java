@@ -25,9 +25,9 @@ public class   Users implements UserDetails {
     @NotEmpty(message = "user should have name!")
     private String username;
     private String password;
+    private String email;
     @NotNull(message = "You need to add date of birth")
     private LocalDate dob;
-
     private Roles roles;
     @OneToMany(mappedBy = "users" ,cascade = CascadeType.ALL)
     private Set<Shows> shows;
@@ -35,14 +35,25 @@ public class   Users implements UserDetails {
     private Set<Rating> rating;
     @OneToMany(mappedBy = "users" ,cascade = CascadeType.ALL)
     private Set<Favorite> favorite;
-    public Users(String username, String password, LocalDate dob, Roles roles) {
+
+    public Users(int id, String username, String password, String email, LocalDate dob, Roles roles) {
+        this.id = id;
         this.username = username;
         this.password = password;
+        this.email = email;
         this.dob = dob;
         this.roles = roles;
     }
 
     public Users() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getId() {
@@ -88,12 +99,12 @@ public class   Users implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Users users = (Users) o;
-        return id == users.id && Objects.equals(username, users.username) && Objects.equals(password, users.password) && Objects.equals(dob, users.dob) && Objects.equals(roles, users.roles);
+        return id == users.id && Objects.equals(username, users.username) && Objects.equals(password, users.password) && Objects.equals(email, users.email) && Objects.equals(dob, users.dob) && roles == users.roles;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, dob, roles);
+        return Objects.hash(id, username, password, email, dob, roles);
     }
 
     @Override
@@ -102,10 +113,15 @@ public class   Users implements UserDetails {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 ", dob=" + dob +
                 ", roles=" + roles +
+                ", shows=" + shows +
+                ", rating=" + rating +
+                ", favorite=" + favorite +
                 '}';
     }
+
     @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {

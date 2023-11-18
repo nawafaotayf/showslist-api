@@ -8,6 +8,7 @@ import java.time.LocalDate;
 public class SignUpRequest {
     private String username;
     private String password;
+    private String email;
     private LocalDate dob;
 
 }

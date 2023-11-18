@@ -36,6 +36,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         Users users = new Users();
 
         users.setUsername(signUpRequest.getUsername());
+        users.setEmail(signUpRequest.getEmail());
         users.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
         users.setDob(signUpRequest.getDob());
         users.setRoles(Roles.USER);
@@ -49,7 +50,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if(users == null){
             throw new UsernameNotFoundException("User not found");
         }
-        var token = jwtService.generateToken(users);
+        var token = jwtService.generateToken(users, users.getId(), users.getRoles());
         JwtAuthenticationRequest jwtAuthenticationRequest = new JwtAuthenticationRequest();
 
         jwtAuthenticationRequest.setToken(token);

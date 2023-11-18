@@ -4,9 +4,7 @@ import com.example.nawafotayf.movielist.entity.Rating;
 import com.example.nawafotayf.movielist.repository.RatingRepository;
 import com.example.nawafotayf.movielist.service.interfaces.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -41,7 +39,7 @@ public class RatingServiceImpl implements RatingService {
 
     @Override
     public List<Rating> findRatingByShowsId(int id) {
-        return ratingRepository.findByshows_id(id);
+        return ratingRepository.findByshows_idOrderByIdDesc(id);
 
     }
 }

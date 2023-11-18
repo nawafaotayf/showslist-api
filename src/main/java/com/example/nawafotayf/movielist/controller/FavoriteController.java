@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class FavoriteController {
@@ -17,9 +18,13 @@ public class FavoriteController {
     public String addShowsToFavorite(@RequestBody Favorite favorite){
         return favoriteServiceImpl.addShowsToFavorite(favorite);
     }
-    @GetMapping(value = "/movielist/favorite/{id}")
+    @GetMapping(value = "/movielist/favorite/user/{id}")
     public List<Favorite> getAllFavoriteByUserId(@PathVariable int id){
         return favoriteServiceImpl.getAllFavoriteByUserId(id);
+    }
+    @GetMapping(value = "/movielist/favorite/show/{userId}/{showId}")
+    public Optional<Favorite> getFavoriteByUserIdAndShowId(@PathVariable int userId, @PathVariable int showId){
+        return favoriteServiceImpl.getfavoriteByShowIdAndUserId(userId, showId);
     }
     @GetMapping(value = "/movielist/favorite/avg-rating/{id}")
     public Double getAverageRatingByShowId(@PathVariable int id){

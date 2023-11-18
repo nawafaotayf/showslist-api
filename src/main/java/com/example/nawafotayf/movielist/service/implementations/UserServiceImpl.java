@@ -25,18 +25,26 @@ public class UserServiceImpl implements UsersService {
     }
 
     @Override
+    public Users findUserById(int id) {
+        return usersRepository.findById(id).get();
+    }
+
+    @Override
     public void deleteUser(String name) {
         Users users = usersRepository.findByusername(name);
         usersRepository.delete(users);
     }
     @Override
-    public void updateUser(String name, Users users) {
-        Users findUsers = usersRepository.findByusername(name);
+    public void updateUser(int id, Users users) {
+        Users findUsers = usersRepository.findById(id).get();
         if(users.getUsername() != null){
             findUsers.setUsername(users.getUsername());
         }
         if(users.getPassword() !=null){
             findUsers.setPassword(users.getPassword());
+        }
+        if(users.getEmail() !=null){
+            findUsers.setEmail(users.getEmail());
         }
         if(users.getDob() != null){
             findUsers.setDob(users.getDob());

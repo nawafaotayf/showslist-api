@@ -30,6 +30,7 @@ public class MovieListApplication implements CommandLineRunner{
 			Users users = new Users();
 
 			users.setUsername("admin");
+			users.setEmail("admin@gmail.com");
 			users.setDob(LocalDate.ofEpochDay(1998-02-03));
 			users.setPassword(new BCryptPasswordEncoder().encode("admin"));
 			users.setRoles(Roles.ADMIN);
