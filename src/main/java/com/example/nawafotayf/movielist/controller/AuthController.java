@@ -15,7 +15,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = "/movielist/auth")
 @NoArgsConstructor
 public class AuthController {
@@ -25,11 +29,13 @@ public class AuthController {
     private UsersRepository usersRepository;
 
     @PostMapping(value = "/signup")
-    public ResponseEntity<String> signup(@RequestBody SignUpRequest signUpRequest){
+    public ResponseEntity<?> signup(@RequestBody SignUpRequest signUpRequest){
         try{
             authenticationService.signUp(signUpRequest);
-        String message = "your account added successfully";
-        return ResponseEntity.status(HttpStatus.CREATED).body(message);
+            String message = "your account added successfully";
+            Map<String, String> response = new HashMap<>();
+            response.put("message", message);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
         }
         catch (Exception e){
             String message = "account not added\n" + e.getMessage();

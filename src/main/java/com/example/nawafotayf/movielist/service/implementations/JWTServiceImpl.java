@@ -19,16 +19,16 @@ import java.util.function.Function;
 
 @Service
 public class JWTServiceImpl implements JWTService {
-    public String generateToken(UserDetails userDetails, int id, Roles role){
-        return Jwts.builder()
-                .setSubject(userDetails.getUsername())
-                .claim("id", id)
-                .claim("role", role)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
-                .signWith(getSiginKey(), SignatureAlgorithm.HS256)
-                .compact();
-    }
+        public String generateToken(UserDetails userDetails, int id, Roles role){
+            return Jwts.builder()
+                    .setSubject(userDetails.getUsername())
+                    .claim("id", id)
+                    .claim("role", role)
+                    .setIssuedAt(new Date(System.currentTimeMillis()))
+                    .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
+                    .signWith(getSiginKey(), SignatureAlgorithm.HS256)
+                    .compact();
+        }
         public String generateRefreshToken(Map<String, Object> extraClaims, UserDetails userDetails){
         return Jwts.builder().setClaims(extraClaims).setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))

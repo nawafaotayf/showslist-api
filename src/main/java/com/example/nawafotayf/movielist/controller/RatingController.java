@@ -7,9 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RatingController {
     @Autowired
     RatingServiceImpl ratingServiceImpl;
@@ -19,6 +22,8 @@ public class RatingController {
         try{
             ratingServiceImpl.addRating(ratings);
             String message = "rating added successfully";
+            Map<String, String> response = new HashMap<>();
+            response.put("message", message);
             return ResponseEntity.status(HttpStatus.OK).body(message);
         }
         catch (Exception e){

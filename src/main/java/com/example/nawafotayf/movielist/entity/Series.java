@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_series")
 @JsonPropertyOrder({"id", "image", "name", "story", "duration", "studios","seasons","episodes","start","end","users"})
-@CrossOrigin
+//@CrossOrigin
 public class Series extends Shows{
     private int episodes;
     private LocalDate start;

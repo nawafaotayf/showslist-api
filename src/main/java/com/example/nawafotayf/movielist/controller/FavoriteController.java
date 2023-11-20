@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class FavoriteController {
     @Autowired
     private FavoriteServiceImpl favoriteServiceImpl;
