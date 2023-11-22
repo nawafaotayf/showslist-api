@@ -23,6 +23,7 @@ ScreenZone is a web application designed to manage and display a list of movies 
    ```
 4. Import postman file from the project its have all the endpoints
 5. Run the application
+6. Clone Front-end from [ScreenZone portal](https://github.com/nawafaotayf/showslist-portal)
    
 ## Technologies Used
 - IntelliJ IDEA: As the integrated development environment (IDE).
