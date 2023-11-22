@@ -1,4 +1,4 @@
-# Movie-List
+# ScreenZone
 
 ## Description
 
@@ -65,7 +65,7 @@ Movie-List is a web application designed to manage and display a list of movies 
 - [Trello Board](https://trello.com/b/wi9W277q/movie-list)
 - [Presentation](https://docs.google.com/presentation/d/1MAeHkpOcHL-RgdyD2i5E3QJT28XKJNGuchqMLxYpn64/edit?usp=sharing)
 ## Future Work
-
+I done it all 
 In the future, I plan to extend this project in several ways:
 
 1. **Frontend Development:** I plan to develop a frontend for this application using a modern JavaScript framework like React or Vue. This will provide users with a more interactive experience and make it easier to navigate through the movie list.
