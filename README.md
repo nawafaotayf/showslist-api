@@ -1,8 +1,8 @@
-# Movie-List
+# ScreenZone Api
 
 ## Description
 
-Movie-List is a web application designed to manage and display a list of movies and series. It allows users to add their own ratings and reviews for each movie or series. The application provides an API for users to navigate through the movie list, also includes a user management system where users can register, login.
+ScreenZone is a web application designed to manage and display a list of movies and series. It allows users to add their own ratings and reviews for each movie or series. The application provides an API for users to navigate through the movie list, also includes a user management system where users can register, login.
 
 ## Class Diagram
 ![Class Diagram](classdiagram.png)
@@ -23,6 +23,7 @@ Movie-List is a web application designed to manage and display a list of movies 
    ```
 4. Import postman file from the project its have all the endpoints
 5. Run the application
+6. Clone Front-end from [ScreenZone portal](https://github.com/nawafaotayf/showslist-portal)
    
 ## Technologies Used
 - IntelliJ IDEA: As the integrated development environment (IDE).
@@ -65,7 +66,7 @@ Movie-List is a web application designed to manage and display a list of movies 
 - [Trello Board](https://trello.com/b/wi9W277q/movie-list)
 - [Presentation](https://docs.google.com/presentation/d/1MAeHkpOcHL-RgdyD2i5E3QJT28XKJNGuchqMLxYpn64/edit?usp=sharing)
 ## Future Work
-
+I done it all 
 In the future, I plan to extend this project in several ways:
 
 1. **Frontend Development:** I plan to develop a frontend for this application using a modern JavaScript framework like React or Vue. This will provide users with a more interactive experience and make it easier to navigate through the movie list.
