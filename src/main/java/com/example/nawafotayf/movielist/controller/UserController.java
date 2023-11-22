@@ -32,10 +32,10 @@ public class UserController {
     public List<Users> listAllUsers() {
         return userServiceImpl.listAllUsers();
     }
-    @DeleteMapping(value = "/movielist-admin/users/deleteuser")
-    public ResponseEntity<String> deleteUser(@RequestParam String name) {
+    @DeleteMapping(value = "/movielist-admin/users/deleteuser/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable int id) {
         try {
-            userServiceImpl.deleteUser(name);
+            userServiceImpl.deleteUser(id);
             String message = "user deleted";
             return ResponseEntity.status(HttpStatus.OK).body(message);
         }

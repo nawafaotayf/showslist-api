@@ -38,7 +38,7 @@ public class JWTServiceImpl implements JWTService {
     }
     //413F4428472B4B6250655368566D5970337336763979244226452948404D6351
     private Key getSiginKey(){
-        byte[] key = Decoders.BASE64.decode("5Tz7WplYvL57ZK868IFG1twpQKr9H3yIeDuD3RBjzL4=");
+            byte[] key = Decoders.BASE64.decode("5Tz7WplYvL57ZK868IFG1twpQKr9H3yIeDuD3RBjzL4=");
         return Keys.hmacShaKeyFor(key);
     }
     private <T> T extractClaim(String token, Function<Claims, T> claimsResolvers){

@@ -19,7 +19,7 @@ public class Series extends Shows{
     @OneToMany(mappedBy = "series")
     private Favorite favorite;
 
-    public Series(int id, String name, String story, double duration, String studios, int seasons, String image, Users users, int episodes, LocalDate start, LocalDate end) {
+    public Series(int id, String name, String story, String duration, String studios, int seasons, String image, Users users, int episodes, LocalDate start, LocalDate end) {
         super(id, name, story, duration, studios, seasons, image, users);
         this.episodes = episodes;
         this.start = start;

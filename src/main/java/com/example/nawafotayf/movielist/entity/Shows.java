@@ -17,7 +17,7 @@ public class Shows {
     @Column(unique = true)
     private String name;
     private String story;
-    private double duration;
+    private String duration;
     private String studios;
     private int seasons;
     private String image;
@@ -29,7 +29,7 @@ public class Shows {
     @OneToMany(mappedBy = "shows" ,cascade = CascadeType.ALL)
     private Set<Favorite> favorite;
 
-    public Shows(int id, String name, String story, double duration, String studios, int seasons,String image, Users users) {
+    public Shows(int id, String name, String story, String duration, String studios, int seasons,String image, Users users) {
         Id = id;
         this.name = name;
         this.story = story;
@@ -75,11 +75,11 @@ public class Shows {
         this.story = story;
     }
 
-    public double getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 

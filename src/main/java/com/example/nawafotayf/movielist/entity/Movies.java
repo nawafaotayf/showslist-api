@@ -14,7 +14,7 @@ import java.util.Set;
 public class Movies extends Shows{
     private LocalDate aired;
 
-    public Movies(int id, String name, String story, double duration, String studios, int seasons,String image, Users users, LocalDate aired) {
+    public Movies(int id, String name, String story, String duration, String studios, int seasons,String image, Users users, LocalDate aired) {
         super(id, name, story, duration, studios, seasons, image, users);
         this.aired = aired;
     }

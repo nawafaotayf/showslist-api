@@ -38,7 +38,7 @@ public class SeriesServiceImpl implements SeriesService {
         if(series.getStory() != null){
             findSeries.setStory(series.getStory());
         }
-        if(series.getDuration() != 0){
+        if(series.getDuration() != null){
             findSeries.setDuration(series.getDuration());
         }
         if(series.getStudios() != null){

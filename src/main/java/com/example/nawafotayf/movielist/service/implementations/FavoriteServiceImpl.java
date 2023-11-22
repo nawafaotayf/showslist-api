@@ -6,7 +6,11 @@ import com.example.nawafotayf.movielist.service.interfaces.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -35,7 +39,25 @@ public class FavoriteServiceImpl implements FavoriteService {
 
     @Override
     public Double findAverageRatingByShowId(int id) {
-        return favoriteRepository.findAverageRatingByShowId(id);
+//        Double average = favoriteRepository.findAverageRatingByShowId(id);
+//        DecimalFormat df = new DecimalFormat("#.##");
+//        return Double.parseDouble(df.format(average));
+        Double average = favoriteRepository.findAverageRatingByShowId(id);
+
+        // Use Locale.getDefault() to get the default locale of the system
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.getDefault());
+
+        // Set the maximum fraction digits to 2
+        nf.setMaximumFractionDigits(2);
+
+        try {
+            // Parse the formatted number using the NumberFormat instance
+            return nf.parse(nf.format(average)).doubleValue();
+        } catch (ParseException e) {
+            // Handle the exception appropriately
+            e.printStackTrace();
+            return null; // or throw an exception or return a default value
+        }
     }
 
     @Override

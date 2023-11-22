@@ -36,7 +36,7 @@ public class MoviesServiceImpl implements MoviesService {
         if(movies.getStory() != null){
             movieName.setStory(movies.getStory());
         }
-        if(movies.getDuration() != 0){
+        if(movies.getDuration() != null){
             movieName.setDuration(movies.getDuration());
         }
         if(movies.getStudios() != null){
@@ -70,7 +70,7 @@ public class MoviesServiceImpl implements MoviesService {
         if(movies.getStory() != null){
             movieId.setStory(movies.getStory());
         }
-        if(movies.getDuration() != 0){
+        if(movies.getDuration() != null){
             movieId.setDuration(movies.getDuration());
         }
         if(movies.getStudios() != null){
