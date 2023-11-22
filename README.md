@@ -1,4 +1,4 @@
-# ScreenZone
+# ScreenZone Portal
 
 ## Description
 
