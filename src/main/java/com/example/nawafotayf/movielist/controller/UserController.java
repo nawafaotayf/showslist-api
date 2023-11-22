@@ -13,10 +13,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @NoArgsConstructor
 public class UserController {
     @Autowired
@@ -33,12 +34,13 @@ public class UserController {
         return userServiceImpl.listAllUsers();
     }
     @DeleteMapping(value = "/movielist-admin/users/deleteuser/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable int id) {
+    public ResponseEntity<?> deleteUser(@PathVariable int id) {
         try {
             userServiceImpl.deleteUser(id);
             String message = "user deleted";
-            return ResponseEntity.status(HttpStatus.OK).body(message);
-        }
+            Map<String, String> response = new HashMap<>();
+            response.put("message", message);
+            return ResponseEntity.status(HttpStatus.OK).body(response);        }
         catch (Exception e){
             String message = "user not deleted\n" + e.getMessage();
             return ResponseEntity.badRequest().body(message);
